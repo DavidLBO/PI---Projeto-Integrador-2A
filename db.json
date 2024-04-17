@@ -1,0 +1,84 @@
+{
+    "usuarios": [
+        {
+            "id_usuario": 1,
+            "nome_usuario": "David Tempesta",
+            "telefone_usuario": "(61) 91234-5678",
+            "cpf_usuario": "123.456.789-10"
+        },
+        {
+            "id_usuario": 2,
+            "nome_usuario": "Guilherme Serra",
+            "telefone_usuario": "(61) 98765-4321",
+            "cpf_usuario": "987.654.321-00"
+        }
+    ],
+    "pedidos": [
+        {
+            "id_pedido": 1,
+            "id_usuario": 1,
+            "id_loja": 1,
+            "id_produto": 1,
+            "status_pedido": "Reservado",
+            "data_pedido": "2024-04-17"
+        },
+        {
+            "id_pedido": 2,
+            "id_usuario": 2,
+            "id_loja": 2,
+            "id_produto": 2,
+            "status_pedido": "Finalizado",
+            "data_pedido": "2024-04-16"
+        }
+    ],
+    "produtos": [
+        {
+            "id_produto": 1,
+            "id_loja": 1,
+            "nome_produto": "Redbull",
+            "quantidade_estoque": 50,
+            "categoria_produto": "Bebida",
+            "valor_produto": 12.99
+        },
+        {
+            "id_produto": 2,
+            "id_loja": 2,
+            "nome_produto": "Coxinha",
+            "quantidade_estoque": 20,
+            "categoria_produto": "Comida",
+            "valor_produto": 5.99
+        }
+    ],
+    "lojas": [
+        {
+            "id_loja": 1,
+            "nome_loja": "Loja Legal",
+            "endereco_loja": "Iesb sul",
+            "telefone_loja": "(61) 1234-5678",
+            "cnpj_loja": "12.345.678/0001-90"
+        },
+        {
+            "id_loja": 2,
+            "nome_loja": "Loja Meme",
+            "endereco_loja": "Iesb norte",
+            "telefone_loja": "(61) 9876-5432",
+            "cnpj_loja": "98.765.432/0001-21"
+        }
+    ],
+    "pagamentos": [
+        {
+            "id_pedido": 1,
+            "valor_total": 12.99,
+            "metodo_pagamento": "Cartão de Crédito",
+            "status_pagamento": "Não Pago",
+            "data_pagamento": "2024-04-17"
+        },
+        {
+            "id_pedido": 2,
+            "valor_total": 5.99,
+            "metodo_pagamento": "Dinheiro",
+            "status_pagamento": "Pago",
+            "data_pagamento": "2024-04-16"
+        }
+    ]
+}
