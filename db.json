@@ -3,13 +3,11 @@
         {
             "id_usuario": 1,
             "nome_usuario": "David Tempesta",
-            "telefone_usuario": "(61) 91234-5678",
             "cpf_usuario": "123.456.789-10"
         },
         {
             "id_usuario": 2,
             "nome_usuario": "Guilherme Serra",
-            "telefone_usuario": "(61) 98765-4321",
             "cpf_usuario": "987.654.321-00"
         }
     ],
@@ -56,13 +54,6 @@
             "endereco_loja": "Iesb sul",
             "telefone_loja": "(61) 1234-5678",
             "cnpj_loja": "12.345.678/0001-90"
-        },
-        {
-            "id_loja": 2,
-            "nome_loja": "Loja Meme",
-            "endereco_loja": "Iesb norte",
-            "telefone_loja": "(61) 9876-5432",
-            "cnpj_loja": "98.765.432/0001-21"
         }
     ],
     "pagamentos": [
