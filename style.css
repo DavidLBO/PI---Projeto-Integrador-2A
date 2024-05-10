@@ -76,6 +76,7 @@ html {
   }
   footer {
       background-color: #417;
+      position: fixed;
       color: #fff;
       font-family: poppins;
       text-align: center;
