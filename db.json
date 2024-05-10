@@ -1,14 +1,14 @@
 {
     "usuarios": [
         {
-            "id_usuario": 1,
-            "nome_usuario": "David Tempesta",
-            "cpf_usuario": "123.456.789-10"
+            "id": 1,
+            "nome": "David Tempesta",
+            "cpf": "123.456.789-10"
         },
         {
-            "id_usuario": 2,
-            "nome_usuario": "Guilherme Serra",
-            "cpf_usuario": "987.654.321-00"
+            "id": 2,
+            "nome": "Guilherme Serra",
+            "cpf": "987.654.321-00"
         }
     ],
     "pedidos": [
