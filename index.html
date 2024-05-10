@@ -3,42 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cantina Online</title>
+    <title>Cantina On-line</title>
     <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Cantina Online</h1>
+        <h1>Cantina On-line</h1>
     </header>
     <nav>
         <a href="#">Home</a>
         <a href="#">Produtos</a>
         <a href="#">Contato</a>
+        <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
     </nav>
-    <section>
+    <section id="container">
         <div class="product" id="product1">
             <img src="produto1.jpg" alt="Produto 1">
             <h2>Coxinha</h2>
-            <p>Coxinha de frango frita no óleo</p>
+            <p class="description">Coxinha de frango frita no óleo</p>
             <p>R$ 7,00</p>
             <button onclick="adicionar_carrinho('Coxinha', 7.00)">Adicionar ao Carrinho</button>
         </div>
         <div class="product" id="product2">
             <img src="produto2.jpg" alt="Produto 2">
             <h2>RedBull</h2>
-            <p>Energético RedBull clássico</p>
+            <p class="description">Energético RedBull clássico</p>
             <p>R$ 12,00</p>
             <button onclick="adicionar_carrinho('RedBull', 12.00)">Adicionar ao Carrinho</button>
         </div>
         <div class="product" id="product3">
             <img src="produto3.jpg" alt="Produto 3">
             <h2>Suco</h2>
-            <p>Suco nos sabores Uva e Maçã</p>
+            <p class="description">Suco nos sabores Uva e Maçã</p>
             <p>R$ 3,00</p>
             <button onclick="adicionar_carrinho('Suco', 3.00)">Adicionar ao Carrinho</button>
         </div>
     </section>
-    <section id="cart-Display"></section>
+
+    <section id="cart-menu" class="cart-menu">  
+        <h2>Carrinho</h2>
+        <div id="cart-Display"></div>
+    </section>
+
     <footer>
       <p><b>
         Esta aplicação é um protótipo e não representa a qualidade final do produto.
@@ -46,5 +55,6 @@
         <p>&copy; 2024 Cantina Online. Todos os direitos reservados.</p>
     </footer>
     <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/17662aca71.js" crossorigin="anonymous"></script>
 </body>
 </html>
