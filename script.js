@@ -66,4 +66,3 @@ function adicionar_carrinho(nome_produto, preco_produto) {
   carrinho.push(produtos);
   update_display();
 }
-
