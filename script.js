@@ -41,12 +41,9 @@ fetch('db.json')
   .catch(error => {
     console.error('Erro ao carregar ou analisar o arquivo JSON:', error);
   });
-  
-
-
 
 function update_display() {
-  let display_carrinho = document.getElementById('cart-Display');
+  let display_carrinho = document.getElementById('cart-display');
   display_carrinho.innerHTML = `
       ${carrinho.map(item => `
         <div>
