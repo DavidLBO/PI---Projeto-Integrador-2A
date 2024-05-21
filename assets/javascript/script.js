@@ -1,3 +1,6 @@
+let carrinho = [];
+let produtos = [];
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('db.json')
       .then(response => response.json())
@@ -73,7 +76,7 @@ const resultadoBusca = document.getElementById('products');
 resultadoBusca.innerHTML = ''; // Limpa o conteúdo atual da lista de produtos
 
 if (produtoEncontrado.length > 0) {
-  produtoEncontrado.forEach(produto => {
+    produtoEncontrado.forEach(produto => {
     const productItem = document.createElement('div');
     productItem.classList.add('product-item');
     productItem.innerHTML = `

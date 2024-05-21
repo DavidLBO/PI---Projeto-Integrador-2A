@@ -40,11 +40,156 @@
         },
         {
             "id_produto": 2,
-            "id_loja": 2,
+            "id_loja": 1,
             "nome_produto": "Coxinha",
             "quantidade_estoque": 20,
             "categoria_produto": "Comida",
             "valor_produto": 5.99
+        },
+        {
+            "id_produto": 3,
+            "id_loja": 1,
+            "nome_produto": "Coca-Cola",
+            "quantidade_estoque": 20,
+            "categoria_produto": "Bebida",
+            "valor_produto": 3.89
+        },
+        {
+            "id_produto": 4,
+            "id_loja": 1,
+            "nome_produto": "Sanduiche Natural",
+            "quantidade_estoque": 20,
+            "categoria_produto": "Comida",
+            "valor_produto": 4.00
+        }
+        ,
+        {
+          "id_produto": 5,
+          "id_loja": 1,
+          "nome_produto": "Pastel de Carne",
+          "quantidade_estoque": 30,
+          "categoria_produto": "Comida",
+          "valor_produto": 6.50
+        },
+        {
+          "id_produto": 6,
+          "id_loja": 1,
+          "nome_produto": "Empada de Frango",
+          "quantidade_estoque": 25,
+          "categoria_produto": "Comida",
+          "valor_produto": 4.50
+        },
+        {
+          "id_produto": 7,
+          "id_loja": 1,
+          "nome_produto": "Pão de Queijo",
+          "quantidade_estoque": 50,
+          "categoria_produto": "Comida",
+          "valor_produto": 3.00
+        },
+        {
+          "id_produto": 8,
+          "id_loja": 1,
+          "nome_produto": "Bolo de Cenoura",
+          "quantidade_estoque": 15,
+          "categoria_produto": "Comida",
+          "valor_produto": 4.50
+        },
+        {
+          "id_produto": 9,
+          "id_loja": 1,
+          "nome_produto": "Brigadeiro",
+          "quantidade_estoque": 100,
+          "categoria_produto": "Comida",
+          "valor_produto": 1.50
+        },
+        {
+          "id_produto": 10,
+          "id_loja": 1,
+          "nome_produto": "Churros",
+          "quantidade_estoque": 20,
+          "categoria_produto": "Comida",
+          "valor_produto": 3.50
+        },
+        {
+          "id_produto": 11,
+          "id_loja": 1,
+          "nome_produto": "Torta de Limão",
+          "quantidade_estoque": 10,
+          "categoria_produto": "Comida",
+          "valor_produto": 5.00
+        },
+        {
+          "id_produto": 12,
+          "id_loja": 1,
+          "nome_produto": "Suco de Laranja",
+          "quantidade_estoque": 35,
+          "categoria_produto": "Bebida",
+          "valor_produto": 2.50
+        },
+        {
+          "id_produto": 13,
+          "id_loja": 1,
+          "nome_produto": "Suco de Uva",
+          "quantidade_estoque": 35,
+          "categoria_produto": "Bebida",
+          "valor_produto": 2.50
+        },
+        {
+          "id_produto": 14,
+          "id_loja": 1,
+          "nome_produto": "Água Mineral",
+          "quantidade_estoque": 70,
+          "categoria_produto": "Bebida",
+          "valor_produto": 1.50
+        },
+        {
+          "id_produto": 15,
+          "id_loja": 1,
+          "nome_produto": "Café Expresso",
+          "quantidade_estoque": 50,
+          "categoria_produto": "Bebida",
+          "valor_produto": 2.00
+        },
+        {
+          "id_produto": 16,
+          "id_loja": 1,
+          "nome_produto": "Hambúrguer",
+          "quantidade_estoque": 20,
+          "categoria_produto": "Comida",
+          "valor_produto": 10.00
+        },
+        {
+          "id_produto": 17,
+          "id_loja": 1,
+          "nome_produto": "Hot Dog",
+          "quantidade_estoque": 25,
+          "categoria_produto": "Comida",
+          "valor_produto": 8.00
+        },
+        {
+          "id_produto": 18,
+          "id_loja": 1,
+          "nome_produto": "Pizza Slice",
+          "quantidade_estoque": 15,
+          "categoria_produto": "Comida",
+          "valor_produto": 6.00
+        },
+        {
+          "id_produto": 19,
+          "id_loja": 1,
+          "nome_produto": "Misto Quente",
+          "quantidade_estoque": 30,
+          "categoria_produto": "Comida",
+          "valor_produto": 5.50
+        },
+        {
+          "id_produto": 20,
+          "id_loja": 1,
+          "nome_produto": "Esfirra de Carne",
+          "quantidade_estoque": 25,
+          "categoria_produto": "Comida",
+          "valor_produto": 3.00
         }
     ],
     "lojas": [
