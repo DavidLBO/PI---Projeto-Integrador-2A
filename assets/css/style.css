@@ -1,102 +1,238 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; 
-}
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Adicionado para evitar problemas com padding e border */
+    }
 
-/* Variáveis gerais do projeto */
+    /* Variáveis gerais do projeto */
+    :root {
+        --primary-color: #718;
+        --secondary-color: #417;
+        --white-color: #FFFFFF;
+    }
 
-:root {
-    --primary-color: #718;
-    --secondary-color: #417;
-    --white-color: #FFFFFF;
-}
+    /* Configurações gerais do projeto */
+    html {
+        height: 100%;
+        width: 100%;
+    }
 
-/* Configurações gerais do projeto */
+    body {
+        font-family: "Poppins", sans-serif;
+    }
 
-html {
-    height: 100%;
-    width: 100%;
-}
+    a {
+        text-decoration: none;
+    }
 
-body {
-    font-family: "Poppins", sans-serif;
-}
+    /* Criação/configuração dos estilos do projeto */
+    .header-page {
+        align-items: center;
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
 
-a {
-    text-decoration: none;
-}
+    .header-page a {
+        color: var(--white-color);
+        font-size: 15px;
+        padding: 10px;
+        text-decoration: none;
+        transition: all 300ms ease-in-out;
+    }
 
-/* Criação/configuração dos estilos do projeto */
+    .header-page nav a:hover {
+        color: var(--secondary-color);
+    }
 
-.header-page {
-    align-items: center;
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    width: 100%;
-}
+    .menu-spacing {
+        height: 65px;
+    }
 
-.header-page a {
-    color: var(--white-color);
-    font-size: 15px;
-    padding: 10px;
-    text-decoration: none;
-    transition: all 300ms ease-in-out;
-}
+    .main-input {
+        background-color: #F7F7F7;
+        border: 1px solid #F7F7F7;
+        border-radius: 5px;
+        font-family: "Poppins", sans-serif;
+        height: 25px;
+        padding-left: 5px;
+        width: 300px;
+    }
 
-.header-page nav a:hover {
-    color: var(--secondary-color);
-}
+    .main-input:focus {
+        outline: none;
+    }
 
-.menu-spacing {
-    height: 65px;
-}
+    .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 200px); /* 4 colunas com largura de 200px */
+            gap: 20px; /* Espaçamento entre os itens */
+            padding: 20px; /* Adiciona espaçamento interno para os produtos */
+        }
 
-.main-input {
-    background-color: #F7F7F7;
-    border: 1px solid #F7F7F7;
-    border-radius: 5px;
-    font-family: "Poppins", sans-serif;
-    height: 25px;
-    padding-left: 5px;
-    width: 300px;
-}
+    .product-item {
+        border: 1px solid black;
+        padding: 15px;
+    }
 
-.main-input:focus {
-    outline: none;
-}
+    .footer-page {
+        background-color: var(--primary-color);
+        color: var(--white-color);
+        text-align: center;
+        padding: 10px;
+        bottom: 0;
+        width: 100%;
+    }
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 200px); 
-    gap: 20px;
-    justify-content: center;
-    padding: 20px; 
-}
+    /* Centralizar a barra de busca */
+    .main-search {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px; /* Adiciona um espaçamento na parte inferior da barra de busca */
+    }
 
-.product-item {
-    border: 1px solid black;
-    padding: 15px;
-}
+    /* Centralizar os produtos */
+    .products-container {
+        display: flex;
+        justify-content: center;
+    }
 
-.footer-page {
-    background-color: var(--primary-color);
-    color: var(--white-color);
-    text-align: center;
-    padding: 10px;
-    bottom: 0;
-    width: 100%;
-}
+    .carrinho-pedidos {
+        position: fixed;
+        top: 0;
+        right: -300px; /* Inicialmente oculto */
+        width: 300px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease; /* Efeito de transição suave */
+        z-index: 999; /* Garante que o carrinho esteja acima de outros elementos */
+        overflow-y: auto; /* Adiciona uma barra de rolagem vertical se necessário */
+    }
 
-.main-search {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px; 
-}
+    .carrinho-pedidos.show {
+        right: 0; /* Mostra o carrinho quando a classe 'show' está presente */
+    }
+
+    .carrinho-pedidos h2 {
+        font-size: 20px;
+        text-align: center;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #cart-Display {
+        padding: 20px;
+    }
+
+    .cart-item {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 10px;
+    }
+
+    .cart-item:last-child {
+        border-bottom: none; /* Remove a borda inferior do último item do carrinho */
+    }
+
+    /* Estilos gerais do projeto */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Adicionado para evitar problemas com padding e border */
+    }
+
+    /* Variáveis gerais do projeto */
+    :root {
+        --primary-color: #718;
+        --secondary-color: #417;
+        --white-color: #FFFFFF;
+    }
+
+    /* Configurações gerais do projeto */
+    html {
+        height: 100%;
+        width: 100%;
+    }
+
+    body {
+        font-family: "Poppins", sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    /* Criação/configuração dos estilos do projeto */
+    .header-page {
+        align-items: center;
+        background-color: var(--primary-color);
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        width: 100%;
+    }
+
+    .header-page a {
+        color: var(--white-color);
+        font-size: 15px;
+        padding: 10px;
+        text-decoration: none;
+        transition: all 300ms ease-in-out;
+    }
+
+    .header-page nav a:hover {
+        color: var(--secondary-color);
+    }
+
+    .menu-spacing {
+        height: 65px;
+    }
+
+    .main-input {
+        background-color: #F7F7F7;
+        border: 1px solid #F7F7F7;
+        border-radius: 5px;
+        font-family: "Poppins", sans-serif;
+        height: 25px;
+        padding-left: 5;
+    }
+
+    /* Estilo padrão para o ícone do carrinho */
+    #carrinho-icon {
+        transition: margin-right 0.3s ease;
+    }
+
+    /* Estilo para mover o ícone do carrinho quando o carrinho está aberto */
+    .carrinho-aberto #carrinho-icon {
+        margin-right: 320px; /* Ajuste conforme necessário */
+    }
+
+    .finalizar {
+        width: 15vw;
+        height: 5vh;
+        display: block;
+        margin: 0 auto;
+        font-family: "Poppins", sans-serif;
+
+        transition: all 240ms;
+
+        background-color: #C7FA21;
+        border: 1px solid black;
+    }
+
+    .finalizar:hover {
+        background-color: #ADCF3E;
+        border: 1px solid black;
+        cursor: pointer;
+    }

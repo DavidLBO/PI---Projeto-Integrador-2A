@@ -9,13 +9,15 @@
 </head>
 
 <body>
-    <header class="header-page">
-        <a href="#">
-            <h5>Cantina on-line</h5>
-        </a>
-        <nav>
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-        </nav>
+<header class="header-page">
+    <a href="#">
+        <h5>Cantina on-line</h5>
+    </a>
+    <nav>
+        <a href="#" id="carrinho-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+    </nav>
+</header>
+
     </header>
 
     <div class="menu-spacing"></div>
@@ -24,15 +26,21 @@
         <input class="main-input" type="text" id="buscar" placeholder="Busque por um item">
     </section>
 
-    <div class="products-container"> <!-- Adiciona uma classe para o contêiner dos produtos -->
-        <section class="products-grid" id="products"> <!-- Adiciona uma classe para a grade de produtos -->
-
+    <div class="products-container">
+        <section class="products-grid" id="products">
+            <!-- Produtos serão carregados aqui -->
         </section>
     </div>
 
     <footer class="footer-page">
         <p>&copy; 2024 Cantina On-line. Todos os direitos reservados.</p>
     </footer>
+
+    <aside class="carrinho-pedidos">
+        <h2>Carrinho de Pedidos</h2>
+        <div id="cart-Display"></div>
+        <button onclick="" class="finalizar">Finalizar compra</button>
+    </aside>
 
     <script src="assets/javascript/script.js"></script>
     <script src="https://kit.fontawesome.com/17662aca71.js" crossorigin="anonymous"></script>
