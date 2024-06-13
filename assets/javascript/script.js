@@ -1,5 +1,6 @@
 let carrinho = [];
 let produtos = [];
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('db.json')
     .then(response => response.json())
@@ -35,14 +36,22 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('carrinho-icon').addEventListener('click', () => {
     document.querySelector('.carrinho-pedidos').classList.toggle('show');
   });
+
+  const carrinhoIcon = document.getElementById('carrinho-icon');
+  const body = document.body;
+
+  // Adiciona um evento de clique ao ícone do carrinho
+  carrinhoIcon.addEventListener('click', () => {
+    // Adiciona a classe "carrinho-aberto" ao body
+    body.classList.toggle('carrinho-aberto');
+  });
 });
 
 function somar(carrinho){
   let soma = 0;
   for(let i = 0; i < carrinho.length; i++) {
-    soma = soma + carrinho[i].preco;
+    soma = soma + (carrinho[i].preco * carrinho[i].quantidade);
   }
-  console.log(soma);
   return soma;
 }
 
@@ -51,8 +60,8 @@ function update_display() {
   display_carrinho.id = 'cart-Display';
   display_carrinho.innerHTML = carrinho.map(item => `
     <div class="cart-item">
-      <h1>${item.nome}</h1>
-      <p>Valor: R$${item.preco.toFixed(2)}</p>
+      <h1>${item.nome} (${item.quantidade})</h1>
+      <p>Valor: R$${(item.preco * item.quantidade).toFixed(2)}</p>
     </div>
   `).join("");
 
@@ -68,25 +77,23 @@ function update_display() {
   }
 }
 
-const carrinhoIcon = document.getElementById('carrinho-icon');
-const body = document.body;
-
-// Adiciona um evento de clique ao ícone do carrinho
-carrinhoIcon.addEventListener('click', () => {
-  // Adiciona a classe "carrinho-aberto" ao body
-  body.classList.toggle('carrinho-aberto');
-});
-
 function adicionar_carrinho(id_produto) {
   let produto = produtos.find(produto => produto.id_produto === id_produto);
 
   if (produto) {
-    let produtoCarrinho = {
-      nome: produto.nome_produto,
-      preco: produto.valor_produto
-    };
+    let produtoNoCarrinho = carrinho.find(item => item.id === id_produto);
 
-    carrinho.push(produtoCarrinho);
+    if (produtoNoCarrinho) {
+      produtoNoCarrinho.quantidade++;
+    } else {
+      carrinho.push({
+        id: produto.id_produto,
+        nome: produto.nome_produto,
+        preco: produto.valor_produto,
+        quantidade: 1
+      });
+    }
+
     update_display();
   } else {
     alert("Produto não encontrado");
