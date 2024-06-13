@@ -1,23 +1,27 @@
 let carrinho = [];
-let produtos = [];
+let produtos = new Map(); // Usando Map para a tabela hash
 
 document.addEventListener('DOMContentLoaded', () => {
   fetch('db.json')
     .then(response => response.json())
     .then(data => {
-      produtos = data.produtos; // Armazena os produtos globalmente
-      const listaProdutos = document.getElementById('products');
+      // Armazena os produtos na tabela hash (Map)
+      data.produtos.forEach(produto => {
+        produtos.set(produto.id_produto, produto);
+      });
 
-      // Adiciona os produtos à lista
-      produtos.forEach(produto => {
+      // Converte o Map para uma lista, ordena e exibe os produtos
+      const listaProdutos = document.getElementById('products');
+      const produtosOrdenados = Array.from(produtos.values()).sort((a, b) => a.nome_produto.localeCompare(b.nome_produto));
+      produtosOrdenados.forEach(produto => {
         const productItem = document.createElement('div');
         productItem.classList.add('product-item');
         productItem.innerHTML = `
-                    <h1>${produto.nome_produto}</h1>
-                    <p>Categoria: ${produto.categoria_produto}</p>
-                    <p>R$${produto.valor_produto.toFixed(2)}</p>
-                    <button onclick="adicionar_carrinho(${produto.id_produto})">Adicionar ao carrinho</button>
-                `;
+          <h1>${produto.nome_produto}</h1>
+          <p>Categoria: ${produto.categoria_produto}</p>
+          <p>R$${produto.valor_produto.toFixed(2)}</p>
+          <button onclick="adicionar_carrinho(${produto.id_produto})">Adicionar ao carrinho</button>
+        `;
         listaProdutos.appendChild(productItem);
       });
 
@@ -29,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
   document.getElementById('buscar').addEventListener('input', (event) => {
-    buscarProduto(produtos, event.target.value.toLowerCase());
+    buscarProduto(event.target.value.toLowerCase());
   });
 
   // Adiciona um evento de clique ao ícone do carrinho para mostrar/ocultar o carrinho de pedidos
@@ -58,7 +62,11 @@ function somar(carrinho){
 function update_display() {
   let display_carrinho = document.createElement('div');
   display_carrinho.id = 'cart-Display';
-  display_carrinho.innerHTML = carrinho.map(item => `
+
+  // Ordena o carrinho antes de exibir
+  const carrinhoOrdenado = carrinho.sort((a, b) => a.nome.localeCompare(b.nome));
+
+  display_carrinho.innerHTML = carrinhoOrdenado.map(item => `
     <div class="cart-item">
       <h1>${item.nome} (${item.quantidade})</h1>
       <p>Valor: R$${(item.preco * item.quantidade).toFixed(2)}</p>
@@ -78,7 +86,7 @@ function update_display() {
 }
 
 function adicionar_carrinho(id_produto) {
-  let produto = produtos.find(produto => produto.id_produto === id_produto);
+  let produto = produtos.get(id_produto);
 
   if (produto) {
     let produtoNoCarrinho = carrinho.find(item => item.id === id_produto);
@@ -100,13 +108,14 @@ function adicionar_carrinho(id_produto) {
   }
 }
 
-function buscarProduto(produtos, valor) {
-  const produtoEncontrado = produtos.filter(produto => produto.nome_produto.toLowerCase().includes(valor));
+function buscarProduto(valor) {
+  const produtoEncontrado = Array.from(produtos.values()).filter(produto => produto.nome_produto.toLowerCase().includes(valor));
   const resultadoBusca = document.getElementById('products');
 
   resultadoBusca.innerHTML = ''; // Limpa o conteúdo atual da lista de produtos
 
   if (produtoEncontrado.length > 0) {
+    produtoEncontrado.sort((a, b) => a.nome_produto.localeCompare(b.nome_produto));
     produtoEncontrado.forEach(produto => {
       const productItem = document.createElement('div');
       productItem.classList.add('product-item');
