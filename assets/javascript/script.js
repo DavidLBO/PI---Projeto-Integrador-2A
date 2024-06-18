@@ -133,45 +133,86 @@ function buscarProduto(valor) {
 }
 
 async function finalizarCompra() {
-  // Verifica se há itens no carrinho
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio. Adicione produtos antes de finalizar a compra.");
-    return;
-  }
+    // Verifica se há itens no carrinho
+    if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio. Adicione produtos antes de finalizar a compra.");
+        return;
+    }
 
-  // Atualiza o display do carrinho
-  update_display();
+    // Atualiza o display do carrinho
+    update_display();
 
-  try {
-    // Gera o QR Code com base nos dados do carrinho
-    await generateQRCode();
-  } catch (error) {
-    console.error('Erro ao gerar QR Code:', error);
-    alert('Não foi possível gerar o QR Code. Tente novamente mais tarde.');
-  }
+    try {
+        // Gera o QR Code com base nos dados do carrinho
+        await generateQRCode();
+
+        // Exibe o modal
+        const modal = document.getElementById('qrcode-modal');
+        modal.style.display = "block";
+    } catch (error) {
+        console.error('Erro ao gerar QR Code:', error);
+        alert('Não foi possível gerar o QR Code. Tente novamente mais tarde.');
+    }
+}
+
+function fecharModal() {
+    // Fecha o modal
+    const modal = document.getElementById('qrcode-modal');
+    modal.style.display = "none";
 }
 
 async function generateQRCode() {
-  const qrcodeContainer = document.getElementById('qrcode');
-  qrcodeContainer.innerHTML = ""; // Limpa o QR Code anterior
+    const qrcodeContainer = document.getElementById('qrcode');
+    qrcodeContainer.innerHTML = ""; // Limpa o QR Code anterior
 
-  const carrinhoData = carrinho.map(item => ({
-    nome: item.nome,
-    quantidade: item.quantidade,
-    preco: item.preco.toFixed(2), // Formata o preço com duas casas decimais
-    subtotal: (item.preco * item.quantidade).toFixed(2) // Calcula o subtotal com duas casas decimais
-  }));
+    // Monta um array com objetos contendo todas as informações necessárias
+    const carrinhoData = carrinho.map(item => ({
+        nome: item.nome,
+        quantidade: item.quantidade,
+        preco: item.preco.toFixed(2), // Formata o preço com duas casas decimais
+        subtotal: (item.preco * item.quantidade).toFixed(2) // Calcula o subtotal com duas casas decimais
+    }));
 
-  const carrinhoString = JSON.stringify(carrinhoData, null, 2); // Indentação para melhor legibilidade
+    // Cria uma string formatada para exibir no QR Code
+    let carrinhoFormatted = "";
+    carrinhoData.forEach(item => {
+        carrinhoFormatted += `Nome: ${item.nome}\nQuantidade: ${item.quantidade}\nPreço: R$${item.preco}\nSubtotal: R$${item.subtotal}\n\n`;
+    });
 
-  // Monta a URL da API com os dados do carrinho
-  const apiURL = `http://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(carrinhoString)}&size=200x200`;
+    // Calcula o valor total da compra
+    const totalCompra = carrinho.reduce((total, item) => total + (item.preco * item.quantidade), 0).toFixed(2);
 
-  // Cria um elemento de imagem para exibir o QR Code
-  const qrImg = document.createElement('img');
-  qrImg.src = apiURL;
-  qrImg.alt = 'QR Code';
+    // Adiciona o valor total da compra à string formatada
+    carrinhoFormatted += `Total da Compra: R$${totalCompra}`;
 
-  // Adiciona a imagem do QR Code ao contêiner
-  qrcodeContainer.appendChild(qrImg);
+    // Monta a URL da API com os dados formatados
+    const apiURL = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(carrinhoFormatted)}&size=200x200`;
+
+    try {
+        // Gera o QR Code
+        const response = await fetch(apiURL);
+        if (!response.ok) {
+            throw new Error('Erro ao gerar QR Code');
+        }
+        const qrImgURL = URL.createObjectURL(await response.blob());
+
+        // Cria um elemento de imagem para exibir o QR Code
+        const qrImg = document.createElement('img');
+        qrImg.src = qrImgURL;
+        qrImg.alt = 'QR Code';
+
+        // Adiciona a imagem do QR Code ao contêiner
+        qrcodeContainer.appendChild(qrImg);
+
+        // Adiciona os elementos de parágrafo com os textos desejados dentro do modal
+        const modalText1 = document.getElementById('modalText1');
+        modalText1.textContent = "Leve este QR Code ao balcão";
+
+        const modalText2 = document.getElementById('modalText2');
+        modalText2.textContent = "Seu pedido está pronto para ser retirado!";
+
+    } catch (error) {
+        console.error('Erro ao gerar QR Code:', error);
+        alert('Não foi possível gerar o QR Code. Tente novamente mais tarde.');
+    }
 }

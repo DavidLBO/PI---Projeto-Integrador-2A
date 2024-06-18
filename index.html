@@ -9,15 +9,13 @@
 </head>
 
 <body>
-<header class="header-page">
-    <a href="#">
-        <h5>Cantina on-line</h5>
-    </a>
-    <nav>
-        <a href="#" id="carrinho-icon"><i class="fa-solid fa-cart-shopping"></i></a>
-    </nav>
-</header>
-
+    <header class="header-page">
+        <a href="#">
+            <h5>Cantina on-line</h5>
+        </a>
+        <nav>
+            <a href="#" id="carrinho-icon"><i class="fa-solid fa-cart-shopping"></i></a>
+        </nav>
     </header>
 
     <div class="menu-spacing"></div>
@@ -40,9 +38,21 @@
         <h2>Carrinho de Pedidos</h2>
         <div id="cart-Display"></div>
         <button onclick="finalizarCompra()" class="finalizar">Finalizar compra</button>
-        <div id="qrcode"></div> <!-- Contêiner para exibir o QR Code -->
     </aside>
-    
+
+    <!-- Modal para exibir o QR Code -->
+    <div id="qrcode-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <div class="qr-code-container">
+                <div id="qrcode"></div> <!-- Contêiner para exibir o QR Code -->
+                <div class="qr-code-text">
+                    <p id="modalText1">Leve este QR Code ao balcão</p> <!-- Frase 1 -->
+                    <p id="modalText2">Seu pedido está pronto para ser retirado!</p> <!-- Frase 2 -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="assets/javascript/script.js"></script>
     <script src="https://kit.fontawesome.com/17662aca71.js" crossorigin="anonymous"></script>
