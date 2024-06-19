@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <!-- Header -->
     <header class="header-page">
         <a href="#">
             <h5>Cantina on-line</h5>
@@ -22,6 +23,7 @@
 
     <div class="menu-spacing"></div>
 
+    <!-- Conteúdo Principal -->
     <section class="main-search">
         <input class="main-input" type="text" id="buscar" placeholder="Busque por um item">
     </section>
@@ -32,29 +34,31 @@
         </section>
     </div>
 
-    <footer class="footer-page">
-        <p>&copy; 2024 Cantina On-line. Todos os direitos reservados.</p>
-    </footer>
-
-    <aside class="carrinho-pedidos">
+     <!-- Carrinho de Pedidos -->
+     <aside class="carrinho-pedidos">
         <h2>Carrinho de Pedidos</h2>
-        <div id="cart-Display"></div>
+        <div id="cart-display"></div>
         <button onclick="finalizarCompra()" class="finalizar">Finalizar compra</button>
     </aside>
 
-    <!-- Modal para exibir o QR Code -->
+    <!-- Modal de QR Code -->
     <div id="qrcode-modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="fecharModal()">&times;</span>
             <div class="qr-code-container">
-                <div id="qrcode"></div> <!-- Contêiner para exibir o QR Code -->
+                <div id="qrcode"></div> 
                 <div class="qr-code-text">
-                    <p id="modalText1">Leve este QR Code ao balcão</p> <!-- Frase 1 -->
-                    <p id="modalText2">Seu pedido está pronto para ser retirado!</p> <!-- Frase 2 -->
+                    <p id="first-modal">Leve este QR Code ao balcão</p> 
+                    <p id="second-modal">Seu pedido está pronto para ser retirado!</p> 
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer-page">
+        <p>&copy; 2024 Cantina On-line. Todos os direitos reservados.</p>
+    </footer>
 
     <script src="assets/javascript/script.js"></script>
     <script src="https://kit.fontawesome.com/17662aca71.js" crossorigin="anonymous"></script>

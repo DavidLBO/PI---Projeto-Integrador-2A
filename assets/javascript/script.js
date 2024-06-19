@@ -13,12 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // Converte o Map para uma lista, ordena e exibe os produtos
       const listaProdutos = document.getElementById('products');
       const produtosOrdenados = Array.from(produtos.values()).sort((a, b) => a.nome_produto.localeCompare(b.nome_produto));
+
       produtosOrdenados.forEach(produto => {
         const productItem = document.createElement('div');
         productItem.classList.add('product-item');
+
         productItem.innerHTML = `
           <h1>${produto.nome_produto}</h1>
           <p>Categoria: ${produto.categoria_produto}</p>
+
           <p>R$${produto.valor_produto.toFixed(2)}</p>
           <button onclick="adicionar_carrinho(${produto.id_produto})">Adicionar ao carrinho</button>
         `;
@@ -53,36 +56,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function somar(carrinho) {
   let soma = 0;
+
   for (let i = 0; i < carrinho.length; i++) {
     soma = soma + (carrinho[i].preco * carrinho[i].quantidade);
   }
+
   return soma;
 }
 
 function update_display() {
   let display_carrinho = document.createElement('div');
-  display_carrinho.id = 'cart-Display';
+  display_carrinho.id = 'cart-display';
+
   // Ordena o carrinho antes de exibir
   const carrinhoOrdenado = carrinho.sort((a, b) => a.nome.localeCompare(b.nome));
+
   display_carrinho.innerHTML = carrinhoOrdenado.map(item => `
-  <div class="cart-item">
-  <div>
-  <h1>${item.nome}</h1>
-  <p>Valor: R$${(item.preco * item.quantidade).toFixed(2)}</p>
-  </div>
-  <div class="quantidade-controls">
-  <button class="control-btn" onclick="diminuirQuantidade(${item.id})">-</button>
-  <span class="quantidade">${item.quantidade}</span>
-  <button class="control-btn" onclick="aumentarQuantidade(${item.id})">+</button>
-  </div>
-  <button class="remove-item-btn" onclick="removerItemCarrinho(${item.id})"><i
-  class="fas fa-trash-alt"></i> <!-- icone de lixeira --> </button>
-  </div>
+    <div class="cart-item">
+
+      <div>
+        <h1>${item.nome}</h1>
+        <p>Valor: R$${(item.preco * item.quantidade).toFixed(2)}</p>
+      </div>
+
+      <div class="quantidade-controls">
+        <button class="control-btn" onclick="diminuirQuantidade(${item.id})">-</button>
+        <span class="quantidade">${item.quantidade}</span>
+        <button class="control-btn" onclick="aumentarQuantidade(${item.id})">+</button>
+
+        <button class="remove-item-btn" onclick="removerItemCarrinho(${item.id})"><i
+        class="fas fa-trash-alt"></i> <!-- icone de lixeira --> </button>
+      </div>
+
+    </div>
   `).join("");
   // Soma total
   display_carrinho.innerHTML += `<p>Total: R$${somar(carrinho).toFixed(2)}</p>`;
   // Verifica se o display do carrinho já existe, se sim, substitui
-  let existingCartDisplay = document.getElementById('cart-Display');
+  let existingCartDisplay = document.getElementById('cart-display');
+
   if (existingCartDisplay) {
     existingCartDisplay.replaceWith(display_carrinho);
   } else {
@@ -118,8 +130,8 @@ function removerItemCarrinho(id_produto) {
   update_display();
 }
 function diminuirQuantidade(id_produto) {
-  let produtoNoCarrinho = carrinho.find(item => item.id ===
-    id_produto);
+  let produtoNoCarrinho = carrinho.find(item => item.id === id_produto);
+
   if (produtoNoCarrinho) {
     if (produtoNoCarrinho.quantidade > 1) {
       produtoNoCarrinho.quantidade--;
@@ -131,9 +143,10 @@ function diminuirQuantidade(id_produto) {
     console.error("Produto não encontrado no carrinho.");
   }
 }
+
 function aumentarQuantidade(id_produto) {
-  let produtoNoCarrinho = carrinho.find(item => item.id ===
-    id_produto);
+  let produtoNoCarrinho = carrinho.find(item => item.id === id_produto);
+
   if (produtoNoCarrinho) {
     produtoNoCarrinho.quantidade++;
     update_display();
@@ -144,18 +157,21 @@ function aumentarQuantidade(id_produto) {
 
 function buscarProduto(valor) {
   const produtoEncontrado = Array.from(produtos.values()).filter(produto => produto.nome_produto.toLowerCase().includes(valor));
-  const resultadoBusca = document.getElementById('products');
 
+  const resultadoBusca = document.getElementById('products');
   resultadoBusca.innerHTML = ''; // Limpa o conteúdo atual da lista de produtos
 
   if (produtoEncontrado.length > 0) {
     produtoEncontrado.sort((a, b) => a.nome_produto.localeCompare(b.nome_produto));
+
     produtoEncontrado.forEach(produto => {
       const productItem = document.createElement('div');
       productItem.classList.add('product-item');
+
       productItem.innerHTML = `
         <h1>${produto.nome_produto}</h1>
         <p>Categoria: ${produto.categoria_produto}</p>
+
         <p>R$${produto.valor_produto.toFixed(2)}</p>
         <button onclick="adicionar_carrinho(${produto.id_produto})">Adicionar ao carrinho</button>
       `;
@@ -209,6 +225,7 @@ async function generateQRCode() {
 
   // Cria uma string formatada para exibir no QR Code
   let carrinhoFormatted = "";
+  
   carrinhoData.forEach(item => {
     carrinhoFormatted += `Nome: ${item.nome}\nQuantidade: ${item.quantidade}\nPreço: R$${item.preco}\nSubtotal: R$${item.subtotal}\n\n`;
   });
@@ -225,9 +242,11 @@ async function generateQRCode() {
   try {
     // Gera o QR Code
     const response = await fetch(apiURL);
+
     if (!response.ok) {
       throw new Error('Erro ao gerar QR Code');
     }
+
     const qrImgURL = URL.createObjectURL(await response.blob());
 
     // Cria um elemento de imagem para exibir o QR Code
@@ -239,10 +258,10 @@ async function generateQRCode() {
     qrcodeContainer.appendChild(qrImg);
 
     // Adiciona os elementos de parágrafo com os textos desejados dentro do modal
-    const modalText1 = document.getElementById('modalText1');
+    const modalText1 = document.getElementById('first-modal');
     modalText1.textContent = "Leve este QR Code ao balcão";
 
-    const modalText2 = document.getElementById('modalText2');
+    const modalText2 = document.getElementById('second-modal');
     modalText2.textContent = "Seu pedido está sendo preparado!";
 
   } catch (error) {

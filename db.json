@@ -57,7 +57,7 @@
         {
             "id_produto": 4,
             "id_loja": 1,
-            "nome_produto": "Sanduiche Natural",
+            "nome_produto": "Sanduiche",
             "quantidade_estoque": 20,
             "categoria_produto": "Comida",
             "valor_produto": 4.00
@@ -66,7 +66,7 @@
         {
           "id_produto": 5,
           "id_loja": 1,
-          "nome_produto": "Pastel de Carne",
+          "nome_produto": "Pastel",
           "quantidade_estoque": 30,
           "categoria_produto": "Comida",
           "valor_produto": 6.50
@@ -74,7 +74,7 @@
         {
           "id_produto": 6,
           "id_loja": 1,
-          "nome_produto": "Empada de Frango",
+          "nome_produto": "Empada",
           "quantidade_estoque": 25,
           "categoria_produto": "Comida",
           "valor_produto": 4.50
@@ -90,7 +90,7 @@
         {
           "id_produto": 8,
           "id_loja": 1,
-          "nome_produto": "Bolo de Cenoura",
+          "nome_produto": "Bolo",
           "quantidade_estoque": 15,
           "categoria_produto": "Comida",
           "valor_produto": 4.50
@@ -114,7 +114,7 @@
         {
           "id_produto": 11,
           "id_loja": 1,
-          "nome_produto": "Torta de Limão",
+          "nome_produto": "Torta",
           "quantidade_estoque": 10,
           "categoria_produto": "Comida",
           "valor_produto": 5.00
@@ -122,7 +122,7 @@
         {
           "id_produto": 12,
           "id_loja": 1,
-          "nome_produto": "Suco de Laranja",
+          "nome_produto": "Suco",
           "quantidade_estoque": 35,
           "categoria_produto": "Bebida",
           "valor_produto": 2.50
@@ -130,7 +130,7 @@
         {
           "id_produto": 13,
           "id_loja": 1,
-          "nome_produto": "Suco de Uva",
+          "nome_produto": "Refrigerante",
           "quantidade_estoque": 35,
           "categoria_produto": "Bebida",
           "valor_produto": 2.50
@@ -146,7 +146,7 @@
         {
           "id_produto": 15,
           "id_loja": 1,
-          "nome_produto": "Café Expresso",
+          "nome_produto": "Café",
           "quantidade_estoque": 50,
           "categoria_produto": "Bebida",
           "valor_produto": 2.00
@@ -170,7 +170,7 @@
         {
           "id_produto": 18,
           "id_loja": 1,
-          "nome_produto": "Pizza Slice",
+          "nome_produto": "Pizza",
           "quantidade_estoque": 15,
           "categoria_produto": "Comida",
           "valor_produto": 6.00
@@ -186,7 +186,7 @@
         {
           "id_produto": 20,
           "id_loja": 1,
-          "nome_produto": "Esfirra de Carne",
+          "nome_produto": "Esfirra",
           "quantidade_estoque": 25,
           "categoria_produto": "Comida",
           "valor_produto": 3.00
